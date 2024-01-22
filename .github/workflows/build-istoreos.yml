@@ -34,13 +34,16 @@ jobs:
           # - istoreos-21.02
           - istoreos-22.03
         ARCHITECTURE:
-          # - rk33xx
+          - rk33xx
           # - rk35xx
           # - x86
-          - MT7621
+          # - MT7621
         os:
           - ubuntu-22.04
-
+        include:
+          - REPO_BRANCH: istoreos-22.03
+            ARCHITECTURE: x86-alpha
+            os: ubuntu-22.04
       fail-fast: false
 
     steps:
@@ -75,6 +78,7 @@ jobs:
         sudo rm -rf get-pip.py
         sudo pip install pyelftools
         echo "------------------------------- 清理Docker镜像和软件 -------------------------------"
+        docker rmi `docker images -q
         docker image prune -a -f
         sudo -E apt-get -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mysql* php* mongodb* dotnet* moby* snapd* android* || true
         sudo -E apt-get -qq autoremove --purge
