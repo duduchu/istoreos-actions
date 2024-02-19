@@ -9,7 +9,7 @@ on:
         required: false
         default: 'false'
   schedule:
-   - cron: 0 16 * * *
+   - cron: 0 16 1/7 * *
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos
@@ -34,7 +34,7 @@ jobs:
           # - istoreos-21.02
           - istoreos-22.03
         ARCHITECTURE:
-          - rk33xx
+          # - rk33xx
           # - rk35xx
           # - x86
           - MT7621
